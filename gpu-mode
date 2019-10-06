@@ -1,0 +1,39 @@
+#!/bin/bash
+
+state=$(prime-select query)
+request=$1
+action="reboot" # Default Action = Reboot
+
+# Make BBSwitch Modules Load at Boot
+echo "bbswitch" > /etc/modules-load.d/bbswitch.conf
+
+if [[ $2 == "-s" ]]; then
+    action="shutdown -h now"
+elif [[ $2 == "-n" ]]; then
+    action=""
+fi
+    
+if [ $state == $request ]; then
+    echo "This mode is already set"
+elif [ $request == "intel" ]; then
+    # Switching to intel GPU
+    prime-select intel
+    echo "Turning the nVidia GPU off at boot..."
+    echo "options bbswitch load_state=0" > /etc/modprobe.d/bbswitch.conf
+    $action
+elif [ $request == "nvidia" ]; then
+    # Switching to nVidia GPU
+    prime-select nvidia
+    echo "Turning the nVidia GPU on at boot..."
+    echo "options bbswitch load_state=1" > /etc/modprobe.d/bbswitch.conf
+    $action
+elif [ $request == "query" ]; then
+    # Query current State
+    echo "$state"
+else
+    echo "Enter either intel or nvidia"
+fi
+
+if [[ $action == "" ]]; then
+    echo "GPU mode will switch at the next reboot."
+fi
