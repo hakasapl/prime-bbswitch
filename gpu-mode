@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]; then
+    echo "Please Run this Command as Root"
+    exit
+fi
+
 state=$(prime-select query)
 request=$1
 action="reboot" # Default Action = Reboot
