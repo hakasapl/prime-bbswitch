@@ -15,6 +15,8 @@ Option `nvidia` will set `prime-select` to nvidia, and turn on the GPU at boot. 
 The `-s` option will shutdown the system (no option is reboot automatically)
 The `-n` option will setup the system to use the given mode, but will do no power operation, and the changes will take effect in the next reboot.
 
+**Note:** At this time a reboot is required for changes to take effect, I have yet to find a way to do this without a reboot.
+
 ### Troubleshooting ###
 **No Display Output in nVidia Mode**  
 Comment out the line `options nvidia-drm modeset=1` in the file `/lib/modprobe.d/nvidia-kms.conf` and run `# update-initramfs -u`
