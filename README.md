@@ -8,7 +8,7 @@ This is a wrapper script that utilizes the `prime-select` command, but also uses
 1. `# cp prime-wrapper-bbswitch/gpu-mode /usr/local/bin/`
 
 ### Usage ###
-`gpu-mode [query,intel,nvidia] [-s,-n]`
+`# gpu-mode [query,intel,nvidia] [-s,-n]`
 
 Option `nvidia` will set `prime-select` to nvidia, and turn on the GPU at boot. Option `intel` will set `prime-select` to intel, and turn off the GPU at boot.
 
