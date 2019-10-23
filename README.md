@@ -19,4 +19,7 @@ The `-n` option will setup the system to use the given mode, but will do no powe
 
 ### Troubleshooting ###
 **No Display Output in nVidia Mode**  
-Comment out the line `options nvidia-drm modeset=1` in the file `/lib/modprobe.d/nvidia-kms.conf` and run `# update-initramfs -u`
+If you are using GDM (Gnome Display Manager), you need to modify the file `/etc/X11/Xwrapper.config`. Add the following line to the end of the file.
+```
+needs_root_rights=yes
+```
