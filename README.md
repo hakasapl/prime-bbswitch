@@ -1,4 +1,4 @@
-# nVidia Prime Wrapper Script with BBSwitch #
+# NVIDIA Prime Wrapper Script for Optimus Laptops #
 
 This is a wrapper script that utilizes the `prime-select` command, but also uses bumblebee's bbswitch to completely shut off the GPU in intel mode. This results (for me) in about 7W usage on a Thinkpad X1 Extreme versus 12-14W with the GPU on. You must have proprietary nvidia drivers installed with nvidia-prime (ubuntu distributions only).
 
