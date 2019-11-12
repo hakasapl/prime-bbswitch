@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Please Run this Command as Root"
+    exit
+fi
+
+query=$(prime-select query)
+
+if [ $query = "intel" ]; then
+    echo "Powering off GPU"
+    modprobe bbswitch
+    tee /proc/acpi/bbswitch <<<OFF
+fi
